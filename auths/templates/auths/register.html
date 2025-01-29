@@ -1,0 +1,10 @@
+<form method="post">
+    {% csrf_token %}
+    <fieldset>
+            FirstName: <input type="text" name="firstname" id="firstname">
+            LastName: <input type="text" name="lastname" id="lastname">
+            Email: <input type="text" name="email" id="email">
+            Password: <input type="password" name="password" id="password">
+    </fieldset>
+    <input type="submit" value="Register">
+</form>

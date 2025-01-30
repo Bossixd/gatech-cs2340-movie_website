@@ -6,6 +6,6 @@ admin.site.unregister(User)
 
 @admin.register(User)
 class CustomUserAdmin(UserAdmin):
-    list_display = ('username', 'email', 'first_name', 'last_name', 'is_staff')
-    search_fields = ('username', 'email', 'first_name', 'last_name')
+    list_display = ('username', 'email', 'is_staff')
+    search_fields = ('username', 'email')
     list_filter = ('is_staff', 'is_superuser', 'is_active')

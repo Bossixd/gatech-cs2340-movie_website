@@ -1,5 +1,5 @@
 from django.db import models
-from .models import Movie
+from movies.models import Movie
 
 class Order(models.Model):
     price = models.IntegerField()

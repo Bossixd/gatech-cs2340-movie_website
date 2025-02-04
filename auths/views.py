@@ -49,7 +49,7 @@ def register(request):
         return HttpResponseRedirect(reverse("auths:login"))
 
 def login(request):
-    if (request.method == "GET"):
+    if request.method == "GET":
         return render(request, 'auths/login.html')
     elif request.method == "POST":
         user = authenticate(request, username=request.POST["username"], password=request.POST["password"])
@@ -65,8 +65,34 @@ def logout(request):
     auth.logout(request)
     return redirect("")
 
-# @login_required(login_url="auths:login")
-
+def reset(request):
+    if request.method == "GET":
+        return render(request, 'auths/reset.html')
+    elif request.method == "POST":
+        
+        if not User.objects.filter(email=request.POST["email"]).exists():
+            return render(request, 'auths/reset.html', {
+                "error_type": "email",
+                "error": "Email does not exist!"
+            })
+        
+        if request.POST["password"] != request.POST["confirm_password"]:
+            return render(request, 'auths/reset.html', {
+                "error_type": "password",
+                "error": "Passwords do not match!"
+            })
+            
+        try:
+            validate_password(request.POST["password"])
+        except:
+            return render(request, 'auths/register.html', {
+                "error_type": "password",
+                "error": "Password is not strong enough!"
+            })
+        
+        User.objects.filter(email=request.POST["email"]).update(password=make_password(request.POST["password"]))
+            
+        return render(request, 'auths/login.html')
 
 
 

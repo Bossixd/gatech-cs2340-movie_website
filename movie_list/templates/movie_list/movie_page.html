@@ -34,17 +34,16 @@
 
 <h2 style="text-align: center">Movies</h2>
 
-<button class="block" onclick="getDescription()">Movie 1</button>
+    {% for movie in movies %}
 
-<div id="description" style="display:none">
-    This is the description of the movie.
-</div>
+        <button class="block" onclick="getDescription({{forloop.counter}})">{{movie.title}}</button>
+        <div id="{{forloop.counter}}" style="display:none">{{movie.description}}</div>
 
-<button class="block">Movie 2</button>
+    {% endfor %}
 
 <script>
-    function getDescription() {
-        var x = document.getElementById("description");
+    function getDescription(index) {
+        var x = document.getElementById(index);
         if (x.style.display === "none") {
             x.style.display = "block";
         } else {

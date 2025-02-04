@@ -42,7 +42,7 @@ INSTALLED_APPS = [
     'landing',
     'auths',
     'orders',
-    'movie_list'
+    'movie_list',
 ]
 
 MIDDLEWARE = [

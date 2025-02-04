@@ -1,0 +1,11 @@
+<h1>Search Results</h1>
+
+<ul>
+  {% for movie in object_list %}
+  <li>
+    {{ movie.title }}
+  </li>
+  {% empty %}
+  <p>No results found.</p>
+  {% endfor %}
+</ul>

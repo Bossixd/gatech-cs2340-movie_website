@@ -5,12 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="58fe5c7d-5e6e-498a-b2d3-5fc35e792bb7" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/movie_list/templates/movie_list/search_results.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/movie_website/views.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/movie_list/templates/movie_list/movie_page.html" beforeDir="false" afterPath="$PROJECT_DIR$/movie_list/templates/movie_list/movie_page.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/movie_list/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/movie_list/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/movie_list/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/movie_list/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/movie_website/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/movie_website/models.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/movie_website/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/movie_website/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/movie_website/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/movie_website/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/movies/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/movies/admin.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/movies/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/movies/models.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -62,11 +66,12 @@
     "JavaScript Debug.movie_page.html.executor": "Run",
     "JavaScript Debug.movies_list.html.executor": "Run",
     "JavaScript Debug.movies_page.html.executor": "Run",
+    "JavaScript Debug.search_results.html.executor": "Run",
     "Python.urls.executor": "Run",
     "Python.views.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "makeMoviesList",
+    "git-widget-placeholder": "zhixuan",
     "last_opened_file_path": "C:/Users/yangt/Desktop/mysite",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",

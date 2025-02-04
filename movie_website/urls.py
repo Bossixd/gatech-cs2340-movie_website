@@ -16,10 +16,12 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from .views import *
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('landing.urls')),
     path('auths/', include('auths.urls')),
-    path('movie_list/', include('movie_list.urls'))
+    path('movie_list/', include('movie_list.urls')),
+    path("search/", SearchView.as_view(), name="search_results"),
 ]

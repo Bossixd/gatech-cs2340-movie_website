@@ -32,6 +32,11 @@
 </head>
 <body>
 
+<h4 style="text-align: left">Search</h4>
+<form action="{% url 'search_results' %}" method="get">
+    <input name="q" type="text" placeholder="Search Movies">
+</form>
+
 <h2 style="text-align: center">Movies</h2>
 
     {% for movie in movies %}

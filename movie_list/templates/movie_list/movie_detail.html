@@ -1,0 +1,39 @@
+<!-- templates/movies/movie_detail.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ movie.title }}</title>
+</head>
+<body>
+    <h1>{{ movie.title }}</h1>
+    <p>{{ movie.description }}</p>
+
+    <h2>Reviews</h2>
+    {% if reviews %}
+        <ul>
+            {% for review in reviews %}
+                <li>
+                    <strong>{{ review.user.username }}</strong> rated it {{ review.rating }}/5<br>
+                    <em>{{ review.comment }}</em> <br>
+                    <small>Posted on {{ review.created_at }}</small>
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No reviews yet.</p>
+    {% endif %}
+
+    <h2>Add Your Review</h2>
+    {% if user.is_authenticated %}
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Submit Review</button>
+        </form>
+    {% else %}
+        <p>You must be logged in to submit a review. <a href="{% url 'auths:login' %}">Log in</a></p>
+    {% endif %}
+</body>
+</html>

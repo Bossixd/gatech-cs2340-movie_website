@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+    <style>
+        .block {
+            display: block;
+            width: 100%;
+            border: none;
+            background-color: #04AA6D;
+            color: white;
+            padding: 14px 28px;
+            font-size: 16px;
+            cursor: pointer;
+            text-align: center;
+        }
+
+        .block:hover {
+            background-color: #ddd;
+            color: black;
+        }
+
+        #description {
+            width: 100%;
+            padding: 50px 0;
+            text-align: center;
+            background-color: lightblue;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+<h2 style="text-align: center">Movies</h2>
+
+    {% for movie in movies %}
+
+        <button class="block" onclick="getDescription({{forloop.counter}})">{{movie.title}}</button>
+        <div id="{{forloop.counter}}" style="display:none">{{movie.description}}</div>
+
+    {% endfor %}
+
+<script>
+    function getDescription(index) {
+        var x = document.getElementById(index);
+        if (x.style.display === "none") {
+            x.style.display = "block";
+        } else {
+            x.style.display = "none";
+        }
+    }
+</script>
+</body>
+</html>

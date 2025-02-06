@@ -6,7 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="58fe5c7d-5e6e-498a-b2d3-5fc35e792bb7" name="Changes" comment="manual merging">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/movies/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/movies/admin.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/movie_list/templates/movie_list/movie_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/movie_list/templates/movie_list/movie_list.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/movie_list/templates/movie_list/search_results.html" beforeDir="false" afterPath="$PROJECT_DIR$/movie_list/templates/movie_list/search_results.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -24,7 +25,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="main" />
+        <entry key="$PROJECT_DIR$" value="zhixuan" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -62,7 +63,7 @@
     "Python.views.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "zhixuan",
+    "git-widget-placeholder": "main",
     "last_opened_file_path": "C:/Users/yangt/Desktop/mysite",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
@@ -100,6 +101,15 @@
       <workItem from="1738104976308" duration="2407000" />
       <workItem from="1738114570077" duration="4390000" />
     </task>
+    <task id="LOCAL-00001" summary="modified movie admin model to support array inside a list by converting reviews into a string">
+      <option name="closed" value="true" />
+      <created>1738867669775</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1738867669775</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

@@ -3,9 +3,12 @@ from .models import Movie, Review
 
 @admin.register(Movie)
 class MovieAdmin(admin.ModelAdmin):
-    list_display = ('title', 'release_date', 'duration', 'reviews')
+    list_display = ('title', 'release_date', 'duration')
     search_fields = ('title', 'description')
     list_filter = ('release_date',)
+
+    def get_reviews(self, obj):
+        return ":: ".join([review.comment for review in obj.reviews.all()[:3]])
 
 
 @admin.register(Review)

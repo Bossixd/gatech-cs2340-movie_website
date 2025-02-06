@@ -50,7 +50,7 @@
     {% for movie in movies %}
 
         <button class="movieBlock" onclick="getDescription({{forloop.counter}})">{{movie.title}}</button>
-        <div id="{{forloop.counter}}" class="descriptionBlock">
+        <div id="{{forloop.counter}}" class="descriptionBlock" style="display: none;">
             <br/>{{movie.description}}<br/>
             <a href="{% url 'movie_detail' movie.pk %}">
                 <button class="reviewBlock">Reviews</button>

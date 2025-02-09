@@ -1,0 +1,101 @@
+{% extends 'auths/base.html' %}
+
+{% block title %}Orders{% endblock title %}
+
+{% block content %}
+<div style="width: 100%; height: 100%">
+    <div style="height: 72px"></div>
+    <div
+        style="
+            background: white;
+            margin: 24px;
+            padding: 18px;
+            border-radius: 8px;
+            width: auto;
+            height: calc(100% - 72px - 48px - 36px);
+        "
+    >
+        <div style="font-size: 24px; font-weight: bold; margin-bottom: 24px">
+            Orders
+        </div>
+        <div
+            style="
+                width: 100%;
+                display: flex;
+                justify-content: space-between;
+                border-bottom: 1px solid black;
+            "
+        >
+            <div style="display: flex; gap: 256px">
+                <div>Order Id</div>
+                <div style="display: flex; gap: 96px">
+                    <div>Movies</div>
+                    <div>Movie Cost</div>
+                </div>
+            </div>
+            <div style="display: flex">
+                <div style="width: 128px">Date</div>
+                <div style="width: 128px">Order Cost</div>
+            </div>
+        </div>
+        <div style="overflow: auto; height: calc(100% - 76px);">
+            <div
+                style="
+                    display: flex;
+                    flex-direction: column;
+                    padding-top: 12px;
+                    padding-bottom: 12px;
+                    gap: 12px;
+                "
+            >
+                {% for order in orders %}
+                <div
+                    style="
+                        border-bottom: 1px solid lightgray;
+                        padding-bottom: 12px;
+                    "
+                >
+                    <div
+                        style="
+                            width: 100%;
+                            display: flex;
+                            justify-content: space-between;
+                        "
+                    >
+                        <div style="width: 58px; text-align: right">
+                            {{ order.id }}
+                        </div>
+                        <div
+                            style="
+                                display: flex;
+                                align-items: left;
+                                padding-right: 48px;
+                            "
+                        >
+                            <div style="width: 128px; text-align: right">
+                                {{ order.date }}
+                            </div>
+                            <div style="width: 174px; text-align: right">
+                                {{ order.cost }}
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        {% for movie in order.movies %}
+                        <div style="display: flex">
+                            <div style="width: 366px; text-align: right">
+                                {{movie.title}}
+                            </div>
+                            <div style="width: 178px; text-align: right">
+                                {{movie.cost}}
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}

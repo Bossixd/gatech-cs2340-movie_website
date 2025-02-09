@@ -24,4 +24,5 @@ urlpatterns = [
     path('auths/', include('auths.urls')),
     path('movie_list/', include('movie_list.urls')),
     path("search/", SearchView.as_view(), name="search_results"),
+    path("orders/", include('orders.urls')),
 ]

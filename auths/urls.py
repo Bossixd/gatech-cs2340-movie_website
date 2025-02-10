@@ -1,4 +1,4 @@
-from django.urls import path
+from django.urls import path, include
 from . import views
 
 app_name = "auths"
@@ -7,4 +7,6 @@ urlpatterns = [
     path("login/", views.login, name="login"),
     path("logout/", views.logout, name="logout"),
     path("reset/", views.reset, name="reset"),
+    path('movies/', include('movie_list.urls', namespace='movie_list')),
+    path('orders/', include('orders.urls')),
 ]

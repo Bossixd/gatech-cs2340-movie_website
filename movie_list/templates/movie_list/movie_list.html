@@ -55,9 +55,14 @@
     </label>
     <button type="submit" formmethod="get">Search</button>
 </form>
+<h3 style="text-align: left">Shopping Cart</h3>
+{#<button onclick="window.location.href='{% url 'orders' %}'">Shopping Cart</button>#}
+<a href="{% url 'orders:orders' %}">
+    <button type="button">View Orders</button>
+</a>
 
 <body>
-    <h1>Movies</h1>
+    <h1 style="text-align: center"> Movies</h1>
     {% for movie in movies %}
 
         <button class="movieBlock" onclick="getDescription({{forloop.counter}})">{{movie.title}}</button>
@@ -66,6 +71,10 @@
             <a href="{% url 'movie_list:movie_detail' movie.pk %}">
                 <button class="reviewBlock">Reviews</button>
             </a>
+            <br/>${{ movie.price }}<br/>
+<a href="{% url 'orders:add_cart' movie.pk %}">
+    <button class="reviewBlock">Add to Cart</button>
+</a>
         </div>
 
     {% endfor %}

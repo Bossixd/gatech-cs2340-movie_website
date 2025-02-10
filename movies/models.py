@@ -6,7 +6,11 @@ class Movie(models.Model):
     description = models.TextField()
     release_date = models.DateField()
     duration = models.IntegerField()
+    price = models.FloatField()
     poster = models.ImageField(upload_to='posters/', blank=True, null=True)
+
+    def get_price(self):
+        return self.price
 
     def __str__(self):
         return self.title

@@ -9,10 +9,9 @@ def movie_list(request):
 
 def movie_detail(request, pk):
     movie = get_object_or_404(Movie, pk=pk)
-    reviews = movie.reviews.all()  # Using the related_name defined in the model
+    reviews = movie.reviews.all()
 
     if request.method == 'POST':
-        # Ensure the user is logged in; otherwise, you might want to redirect to a login page.
         if not request.user.is_authenticated:
             return redirect('login')  # Replace 'login' with your login URL name
 
@@ -20,9 +19,9 @@ def movie_detail(request, pk):
         if form.is_valid():
             review = form.save(commit=False)
             review.movie = movie
-            review.user = request.user  # Assuming you want to record which user posted the review
+            review.user = request.user
             review.save()
-            return redirect('movie_detail', pk=movie.pk)  # Redirect to avoid form resubmission
+            return redirect('movie_list:movie_detail', pk=movie.pk)  # Use namespace
     else:
         form = ReviewForm()
 
@@ -32,21 +31,3 @@ def movie_detail(request, pk):
         'form': form,
     }
     return render(request, 'movie_list/movie_detail.html', context)
-# def movie_detail(request):
-#     return render(request, 'movie_list/movie_detail.html', {
-#         "movies": [
-#             {
-#                 "title": "The Shawshank Redemption",
-#                 "description": "The redemption of shank shank",
-#             },
-#             {
-#                 "title": "The Godfather",
-#                 "description": "The godfather so fatherly",
-#             },
-#             {
-#                 "title": "The Dark Knight",
-#                 "description": "The dark knight hits",
-#             }
-#         ]
-#     })
-

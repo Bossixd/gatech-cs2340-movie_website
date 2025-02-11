@@ -118,7 +118,7 @@
         .reviewBlock:hover {
             background-color: #003057;
         }
-    
+
         @media (max-width: 768px) {
             .movieBlock {
                 width: 45%;
@@ -142,7 +142,7 @@
 
     <div class="search-form">
         <button onclick="window.location.href='{% url 'movie_list:movie_list' %}'">Home</button>
-    
+
         <div class="search-container">
             <form action="{% url 'search_results' %}" method="get">
                 <input name="q" type="text" placeholder="Search Movies">
@@ -167,6 +167,9 @@
                         <button class="reviewBlock">View Details/Reviews</button>
                     </a>
                 </div>
+                <a href="{% url 'orders:add_cart' movie.pk %}">
+                    <button class="reviewBlock">Add to Cart</button>
+                </a>
             </div>
         {% endfor %}
     </div>

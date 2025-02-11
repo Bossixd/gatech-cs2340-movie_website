@@ -129,6 +129,11 @@
         <input name="q" type="text" placeholder="Search Movies">
         <button type="submit">Search</button>
     </form>
+    <h3 style="text-align: left">Shopping Cart</h3>
+    {#<button onclick="window.location.href='{% url 'orders' %}'">Shopping Cart</button>#}
+    <a href="{% url 'orders:orders' %}">
+        <button type="button">View Orders</button>
+    </a>
 
     <!-- Movie Grid -->
     <div class="movie-grid">
@@ -148,6 +153,10 @@
                     </div>
                     <a href="{% url 'movie_list:movie_detail' movie.pk %}">
                         <button class="reviewBlock">View Details/Reviews</button>
+                    </a>
+                    <br/>${{ movie.price }}<br/>
+                    <a href="{% url 'orders:add_cart' movie.pk %}">
+                        <button class="reviewBlock">Add to Cart</button>
                     </a>
                 </div>
             </div>

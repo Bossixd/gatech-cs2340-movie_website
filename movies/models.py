@@ -8,8 +8,12 @@ class Movie(models.Model):
     title = models.CharField(max_length=255)
     description = models.TextField()
     release_date = models.DateField()
+    price = models.FloatField()
     duration = models.PositiveBigIntegerField()
     poster = models.ImageField(upload_to='posters/', blank=True, null=True)
+
+    def get_price(self):
+        return self.price
 
     @property
     def average_rating(self):

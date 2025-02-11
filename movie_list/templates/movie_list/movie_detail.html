@@ -137,6 +137,14 @@
                         <strong>{{ review.user.username }}</strong> rated it {{ review.rating }}/5<br>
                         <em>{{ review.comment }}</em> <br>
                         <small>Posted on {{ review.created_at }}</small>
+                        {% if review.user == request.user %}
+                        <!-- Links to edit or delete if this is the current user's review -->
+                            <p>
+                                <a href="{% url 'edit_review' review.id %}">Edit</a>
+                                |
+                                <a href="{% url 'delete_review' review.id %}">Delete</a>
+                            </p>
+                        {% endif %}
                     </li>
                 {% endfor %}
             </ul>

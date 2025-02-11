@@ -1,3 +1,4 @@
+from django.core.validators import MinValueValidator, MaxValueValidator
 from django.db import models
 from django.contrib.auth.models import User
 
@@ -14,7 +15,9 @@ class Movie(models.Model):
 class Review(models.Model):
     movie = models.ForeignKey(Movie, related_name='reviews', on_delete=models.CASCADE)
     user = models.ForeignKey(User, on_delete=models.CASCADE)  # Optional: associate review with a user
-    rating = models.PositiveIntegerField()  # e.g., a rating out of 5
+    rating = models.PositiveIntegerField(
+        validators=[MinValueValidator(1), MaxValueValidator(5)]
+    )
     comment = models.TextField()
     created_at = models.DateTimeField(auto_now_add=True)
 

@@ -1,0 +1,17 @@
+<!-- templates/reviews/edit_review.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit Your Review</title>
+</head>
+<body>
+    <h1>Edit Review for "{{ review.movie.title }}"</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Update Review</button>
+    </form>
+    <p><a href="{% url 'movie_detail' review.movie.pk %}">Back to Movie Details</a></p>
+</body>
+</html>

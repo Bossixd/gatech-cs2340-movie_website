@@ -4,19 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="58fe5c7d-5e6e-498a-b2d3-5fc35e792bb7" name="Changes" comment="manual merging">
+    <list default="true" id="58fe5c7d-5e6e-498a-b2d3-5fc35e792bb7" name="Changes" comment="implemented movie shopping cart">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/auths/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/auths/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/movie_list/templates/movie_list/movie_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/movie_list/templates/movie_list/movie_list.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/movie_list/templates/movie_list/search_results.html" beforeDir="false" afterPath="$PROJECT_DIR$/movie_list/templates/movie_list/search_results.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/movies/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/movies/admin.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/movies/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/movies/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/movies/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/movies/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/orders/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/orders/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/orders/templates/orders/orders.html" beforeDir="false" afterPath="$PROJECT_DIR$/orders/templates/orders/orders.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/orders/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/orders/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/orders/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/orders/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -132,7 +122,15 @@
       <option name="project" value="LOCAL" />
       <updated>1739143864055</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="implemented movie shopping cart">
+      <option name="closed" value="true" />
+      <created>1739157750588</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1739157750588</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -141,7 +139,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="manual merging" />
     <MESSAGE value="fixed an issue with search bar querying from incorrect pages" />
-    <option name="LAST_COMMIT_MESSAGE" value="fixed an issue with search bar querying from incorrect pages" />
+    <MESSAGE value="implemented movie shopping cart" />
+    <option name="LAST_COMMIT_MESSAGE" value="implemented movie shopping cart" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

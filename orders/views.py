@@ -8,6 +8,8 @@ from django.contrib import messages
 
 from django.shortcuts import redirect
 
+from datetime import date
+
 @login_required(login_url='auths:login')
 def orders(request):
     if request.method == "GET":
@@ -60,7 +62,7 @@ def orders(request):
 def add_cart(request, movie_id):
     movie = get_object_or_404(Movie, pk=movie_id)
     order, created = Order.objects.get_or_create(user=request.user, ordered=False,
-                                                 defaults={'price': 0.0}
+                                                 defaults={'price': 0.0}, date=date.today()
                                                  )
 
     if movie not in order.movies.all():

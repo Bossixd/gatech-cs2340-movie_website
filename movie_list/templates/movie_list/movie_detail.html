@@ -122,9 +122,20 @@
         .rating-stars .star {
             display: inline-block;
         }
+        .home_button {
+            position:left;
+            background-color: #B3A369;
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1rem;
+            display: inline-block;
+            margin-top:10px;
+        }
     </style>
 </head>
 <body>
+    <a href="{% url 'movie_list:movie_list' %}">
+        <button class = "home_button">HOME</button>
+    </a>
     <h1>{{ movie.title }}</h1>
     <p>{{ movie.description }}</p>
 
@@ -140,9 +151,9 @@
                         {% if review.user == request.user %}
                         <!-- Links to edit or delete if this is the current user's review -->
                             <p>
-                                <a href="{% url 'edit_review' review.id %}">Edit</a>
+                                <a href="{% url 'movie_list:edit_review' review.id %}">Edit</a>
                                 |
-                                <a href="{% url 'delete_review' review.id %}">Delete</a>
+                                <a href="{% url 'movie_list:delete_review' review.id %}">Delete</a>
                             </p>
                         {% endif %}
                     </li>

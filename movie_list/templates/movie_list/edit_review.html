@@ -1,9 +1,89 @@
-<!-- templates/reviews/edit_review.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Edit Your Review</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Review for "{{ review.movie.title }}"</title>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #141414;
+            color: #FFFFFF;
+            margin: 0;
+            padding: 20px;
+        }
+        h1 {
+            font-family: 'Bebas Neue', sans-serif;
+            color: #B3A369;
+            text-align: center;
+            font-size: 3em;
+            margin-bottom: 20px;
+            letter-spacing: 1.5px;
+        }
+        form {
+            background-color: #1F1F1F;
+            padding: 20px;
+            border-radius: 10px;
+            max-width: 600px;
+            margin: 0 auto;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        form p {
+            margin: 15px 0;
+        }
+        form label {
+            display: block;
+            font-weight: 500;
+            margin-bottom: 5px;
+            color: #B3A369;
+        }
+        form input, form textarea, form select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #333;
+            border-radius: 5px;
+            background-color: #2C2C2C;
+            color: #FFFFFF;
+            font-family: 'Roboto', sans-serif;
+            font-size: 1em;
+        }
+        form input:focus, form textarea:focus, form select:focus {
+            border-color: #B3A369;
+            outline: none;
+        }
+        button[type="submit"] {
+            background-color: #B3A369;
+            color: #FFFFFF;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.2em;
+            letter-spacing: 1.5px;
+            display: block;
+            margin: 20px auto 0;
+            transition: background-color 0.3s ease;
+        }
+        button[type="submit"]:hover {
+            background-color: #B20710;
+        }
+        a {
+            color: #B3A369;
+            text-decoration: none;
+            display: block;
+            text-align: center;
+            margin-top: 20px;
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.2em;
+            letter-spacing: 1.5px;
+            transition: color 0.3s ease;
+        }
+        a:hover {
+            color: #B20710;
+        }
+    </style>
 </head>
 <body>
     <h1>Edit Review for "{{ review.movie.title }}"</h1>
@@ -12,6 +92,6 @@
         {{ form.as_p }}
         <button type="submit">Update Review</button>
     </form>
-    <p><a href="{% url 'movie_detail' review.movie.pk %}">Back to Movie Details</a></p>
+    <a href="{% url 'movie_list:movie_detail' review.movie.pk %}">Back to Movie Details</a>
 </body>
 </html>

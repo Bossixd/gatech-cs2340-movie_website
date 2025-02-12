@@ -1,9 +1,8 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth.decorators import login_required
-from movies.models import Movie
-from movies.models import Review
-from movies.forms import ReviewForm
 from django.http import HttpResponseForbidden
+from movies.models import Movie, Review
+from movies.forms import ReviewForm
 
 def movie_list(request):
     movies = Movie.objects.all()
@@ -15,7 +14,7 @@ def movie_detail(request, pk):
 
     if request.method == 'POST':
         if not request.user.is_authenticated:
-            return redirect('login')  # Replace 'login' with your login URL name
+            return redirect('login')  # Redirect to login if user is not authenticated
 
         form = ReviewForm(request.POST)
         if form.is_valid():
@@ -34,7 +33,6 @@ def movie_detail(request, pk):
     }
     return render(request, 'movie_list/movie_detail.html', context)
 
-
 @login_required
 def edit_review(request, review_id):
     # Retrieve the review or return 404 if it doesn't exist.
@@ -50,12 +48,11 @@ def edit_review(request, review_id):
         if form.is_valid():
             form.save()
             # Redirect to the movie detail page after successful edit.
-            return redirect('movie_detail', pk=review.movie.pk)
+            return redirect('movie_list:movie_detail', pk=review.movie.pk)
     else:
         form = ReviewForm(instance=review)
 
     return render(request, 'movie_list/edit_review.html', {'form': form, 'review': review})
-
 
 @login_required
 def delete_review(request, review_id):
@@ -71,7 +68,7 @@ def delete_review(request, review_id):
         movie_pk = review.movie.pk
         review.delete()
         # Redirect to the movie detail page after deletion.
-        return redirect('movie_detail', pk=movie_pk)
+        return redirect('movie_list:movie_detail', pk=movie_pk)
 
     # Render a confirmation page if the request method is GET.
     return render(request, 'movie_list/confirm_delete.html', {'review': review})

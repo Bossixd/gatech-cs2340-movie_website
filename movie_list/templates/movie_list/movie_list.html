@@ -74,6 +74,7 @@
             overflow: hidden;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative; /* For positioning the cart button */
         }
         .movie-card:hover {
             transform: translateY(-5px);
@@ -121,24 +122,64 @@
         .movie-card .reviewBlock:hover {
             background-color: #B20710;
         }
+
+        .cart-button {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background-color: #B3A369;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2em;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            transition: background-color 0.3s ease;
+        }
+        .cart-button:hover {
+            background-color: #B20710;
+        }
+        .cart-view_order {
+            background-color: #B3A369;
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1rem;
+            display: inline-block;
+            margin-top:10px;
+        }
+        .logout {
+            position:left;
+            background-color: #B3A369;
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1rem;
+            display: inline-block;
+            margin-top:10px;
+        }
     </style>
 </head>
 <body>
+    <a href="{% url 'orders:orders' %}">
+        <button type="submit" class="cart-view_order">View Shopping Cart</button>
+    </a>
+    <a href ="">
+        <button type="submit" class="logout">Logout</button>
+    </a>
     <h1>Movies</h1>
     <form action="{% url 'search_results' %}" method="get">
         <input name="q" type="text" placeholder="Search Movies">
         <button type="submit">Search</button>
     </form>
-    <h3 style="text-align: left">Shopping Cart</h3>
-    {#<button onclick="window.location.href='{% url 'orders' %}'">Shopping Cart</button>#}
-    <a href="{% url 'orders:orders' %}">
-        <button type="button">View Orders</button>
-    </a>
 
-    <!-- Movie Grid -->
     <div class="movie-grid">
         {% for movie in movies %}
             <div class="movie-card">
+                <a href="{% url 'orders:add_cart' movie.pk %}">
+                    <button class="cart-button">&#128722;</button>
+                </a>
                 {% if movie.poster %}
                     <img src="{{ movie.poster.url }}" alt="{{ movie.title }} Poster">
                 {% else %}
@@ -150,13 +191,10 @@
                     <div class="details">
                         <p><strong>Duration:</strong> {{ movie.duration }} minutes</p>
                         <p><strong>Release Date:</strong> {{ movie.release_date }}</p>
+                        <p><strong>Price: </strong>${{ movie.price }}</p>
                     </div>
                     <a href="{% url 'movie_list:movie_detail' movie.pk %}">
                         <button class="reviewBlock">View Details/Reviews</button>
-                    </a>
-                    <br/>${{ movie.price }}<br/>
-                    <a href="{% url 'orders:add_cart' movie.pk %}">
-                        <button class="reviewBlock">Add to Cart</button>
                     </a>
                 </div>
             </div>

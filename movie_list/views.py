@@ -5,8 +5,14 @@ from movies.models import Movie, Review
 from movies.forms import ReviewForm
 
 def movie_list(request):
-    movies = Movie.objects.all()
-    return render(request, 'movie_list/movie_list.html', {'movies': movies})
+    if request.method == 'POST':
+        movies = Movie.objects.filter(title__contains=request.POST['search'])
+    elif request.method == 'GET':
+        movies = Movie.objects.all()
+    auth = False
+    if (request.user.is_authenticated):
+        auth = True
+    return render(request, 'movie_list/movie_list.html', {'movies': movies, 'authenticated': auth})
 
 def movie_detail(request, pk):
     movie = get_object_or_404(Movie, pk=pk)

@@ -165,12 +165,22 @@
     <a href="{% url 'orders:orders' %}">
         <button type="submit" class="cart-view_order">View Shopping Cart</button>
     </a>
-    <a href ="">
+    {% if authenticated %}
+    <a href="{% url 'auths:logout' %}">
         <button type="submit" class="logout">Logout</button>
     </a>
+    {% else %}
+    <a href="{% url 'auths:login' %}">
+        <button type="submit" class="logout">Login</button>
+    </a>
+    <a href="{% url 'auths:register' %}">
+        <button type="submit" class="logout">Register</button>
+    </a>
+    {% endif %}
     <h1>Movies</h1>
-    <form action="{% url 'search_results' %}" method="get">
-        <input name="q" type="text" placeholder="Search Movies">
+    <form action="{% url 'movie_list:movie_list' %}" method="post">
+        {% csrf_token %}
+        <input name="search" type="text" placeholder="Search Movies">
         <button type="submit">Search</button>
     </form>
 

@@ -52,53 +52,64 @@
                 "
             >
                 {% for order in orders %}
-                    <div
-                            style="
-                        border-bottom: 1px solid lightgray;
-                        padding-bottom: 12px;
-                    "
-                    >
-                    <div
-                            style="
-                            width: 100%;
-                            display: flex;
-                            justify-content: space-between;
-                        "
-                    >
-                        <div style="width: 58px; text-align: right">
-                            {{ order.id }}
-                        </div>
+                    {% if order.cost != 0 %}
                         <div
                                 style="
+                            border-bottom: 1px solid lightgray;
+                            padding-bottom: 12px;
+                        "
+                        >
+                        <div
+                                style="
+                                width: 100%;
                                 display: flex;
-                                align-items: left;
-                                padding-right: 48px;
+                                justify-content: space-between;
                             "
                         >
-                            <div style="width: 128px; text-align: right">
-                                {{ order.date }}
+                            <div style="width: 58px; text-align: right">
+                                {{ order.id }}
                             </div>
-                            <div style="width: 174px; text-align: right">
-                                ${{ order.cost|floatformat:"2" }}
+                            <div
+                                    style="
+                                    display: flex;
+                                    align-items: left;
+                                    padding-right: 48px;
+                                "
+                            >
+                                <div style="width: 128px; text-align: right">
+                                    {{ order.date }}
+                                </div>
+                                <div style="width: 174px; text-align: right">
+                                    ${{ order.cost|floatformat:"2" }}
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div>
-                        {% for movie in order.movies %}
-                            <div style="display: flex">
-                            <div style="width: 366px; text-align: right">
-                                {{ movie.title }}
+                        <div>
+                            {% for movie in order.movies %}
+                                <div style="display: flex">
+                                    <div style="width: 366px; text-align: right">
+                                        {{ movie.title }}
+                                    </div>
+                                    <div style="width: 178px; text-align: right">
+                                        ${{ movie.cost }}
+                                    </div>
+                                    {% if order.ordered == False %}
+                                    <a href="{% url 'orders:remove_cart' movie.id %}">
+                                        <button type="button">Remove</button>
+                                    </a>
+                                    {% endif %}
+                                </div>
+                            {% endfor %}
                             </div>
-                            <div style="width: 178px; text-align: right">
-                                ${{ movie.cost }}
-                            </div>
-                                <a href="{% url 'orders:remove_cart' movie.id %}">
-                                    <button type="button">Remove</button>
+                            <div>
+                                {% if order.ordered == False %}
+                                <a href="{% url 'orders:checkout' order.id %}">
+                                    <button type="button">Checkout</button>
                                 </a>
+                                {% endif %}
                             </div>
-                        {% endfor %}
                         </div>
-                    </div>
+                    {% endif %}
                 {% endfor %}
                 </div>
             </div>

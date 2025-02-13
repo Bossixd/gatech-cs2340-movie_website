@@ -63,7 +63,7 @@ def login(request):
 
 def logout(request):
     auth.logout(request)
-    return redirect("")
+    return redirect("/")
 
 def reset(request):
     if request.method == "GET":

@@ -19,19 +19,20 @@ def orders(request):
             'orders': []
         }
 
-        for order in orders:
+        for order in orders[::-1]:
             movies = []
             for movie in order.movies.all():
                 movies.append({
                     'title': movie.title,
-                     'cost': movie.price,
+                    'cost': movie.price,
                     'id': movie.id,
                 })
             args['orders'].append({
                 'date': order.date,
                 'cost': order.price,
                 'id': order.id,
-                'movies': movies
+                'movies': movies,
+                'ordered': order.ordered
             })
 
         return render(request, 'orders/orders.html', args)
@@ -42,7 +43,6 @@ def orders(request):
                 date: date of order
                 movies: list of movie titles
         """
-        print(request.POST)
         user = request.user
         date = request.POST['date']
         movies = request.POST.getlist('movies')
@@ -57,13 +57,22 @@ def orders(request):
             order.movies.add(movie)
 
         return redirect(request.META['HTTP_REFERER'])
+    
+@login_required(login_url='auths:login')
+def checkout(request, order_id):
+    order = get_object_or_404(Order, pk=order_id)
+    if order.price == 0:
+        return redirect(request.META['HTTP_REFERER'])
+    order.ordered = True
+    order.save()
+    return redirect(request.META['HTTP_REFERER'])
 
 @login_required(login_url='auths:login')
 def add_cart(request, movie_id):
     movie = get_object_or_404(Movie, pk=movie_id)
     order, created = Order.objects.get_or_create(user=request.user, ordered=False,
-                                                 defaults={'price': 0.0}, date=date.today()
-                                                 )
+                                                    defaults={'price': 0.0}, date=date.today()
+                                                )
 
     if movie not in order.movies.all():
         order.movies.add(movie)

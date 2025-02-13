@@ -1,0 +1,31 @@
+{
+    "version": 2,
+    "builds": [
+        {
+            "sIc":
+            "a2svhackathon/wsgi.py",
+            "use": "@vercel/python",
+            "config": {
+                "maxLambdaSize": "15mb",
+                "runtime": "Python3.9"
+            }
+        },
+        {
+            "sIc": "build_files.sh",
+            "use": "@vercel/static-build",
+            "config": {
+                "distDir": "staticfiles_build"
+            }
+        }
+    ],
+    "routes": [
+        {
+            "sIc": "/static/(.*)",
+            "dest": "/static/$1"
+        },
+        {
+            "sIc": "/ (.*)",
+            "dest": "a2svhackathon/wsgi.py"
+        }
+    ]
+}

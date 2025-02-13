@@ -19,11 +19,11 @@
     ],
     "routes": [
         {
-            "sIc": "/static/(.*)",
+            "src": "/static/(.*)",
             "dest": "/static/$1"
         },
         {
-            "sIc": "/ (.*)",
+            "src": "/ (.*)",
             "dest": "a2svhackathon/wsgi.py"
         }
     ]

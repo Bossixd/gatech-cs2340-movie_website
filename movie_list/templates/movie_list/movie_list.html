@@ -209,6 +209,9 @@
                 </div>
             </div>
         {% endfor %}
+        {% if movies.count == 0 %}
+            <p>No movies found. Press "Search" to reset searches</p>
+        {% endif %}
     </div>
 </body>
 </html>

@@ -4,6 +4,7 @@ from django.http import HttpResponseForbidden
 from movies.models import Movie, Review
 from movies.forms import ReviewForm
 
+@login_required(login_url='auths:login')
 def movie_list(request):
     if request.method == 'POST':
         movies = Movie.objects.filter(title__contains=request.POST['search'])
@@ -14,6 +15,7 @@ def movie_list(request):
         auth = True
     return render(request, 'movie_list/movie_list.html', {'movies': movies, 'authenticated': auth})
 
+@login_required(login_url='auths:login')
 def movie_detail(request, pk):
     movie = get_object_or_404(Movie, pk=pk)
     reviews = movie.reviews.all()

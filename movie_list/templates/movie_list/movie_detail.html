@@ -123,18 +123,54 @@
             display: inline-block;
         }
         .home_button {
-            position:left;
+            position: left;
             background-color: #B3A369;
             font-family: 'Bebas Neue', sans-serif;
             font-size: 1rem;
             display: inline-block;
-            margin-top:10px;
+            margin-top: 10px;
+        }
+
+        /* Media Queries for Responsive Design */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5em; /* Smaller font size for smaller screens */
+            }
+            h2 {
+                font-size: 1.5em; /* Smaller font size for smaller screens */
+            }
+            .add-review-section {
+                flex-direction: column; /* Stack elements vertically on smaller screens */
+                align-items: center;
+            }
+            .review-form, .movie-details {
+                max-width: 100%; /* Full width on smaller screens */
+            }
+            .movie-details {
+                margin-top: 20px; /* Add space between stacked elements */
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 2em; /* Even smaller font size for mobile devices */
+            }
+            h2 {
+                font-size: 1.2em; /* Even smaller font size for mobile devices */
+            }
+            button {
+                padding: 8px 16px; /* Smaller button padding for mobile devices */
+                font-size: 1em;
+            }
+            .home_button {
+                font-size: 0.9rem; /* Smaller font size for the home button */
+            }
         }
     </style>
 </head>
 <body>
     <a href="{% url 'movie_list:movie_list' %}">
-        <button class = "home_button">HOME</button>
+        <button class="home_button">HOME</button>
     </a>
     <h1>{{ movie.title }}</h1>
     <p>{{ movie.description }}</p>
